@@ -1,11 +1,20 @@
 const express = require("express");
 const app = express();
 const uri = require('./app/config/db.config.js');
-const getToken = require('./app/services/token.service.js');
 
 const mongoose = require('mongoose');
+require('./app/routes/spoti.router.js')(app);
+
 mongoose.set('useUnifiedTopology', true);
 mongoose.set('useNewUrlParser', true);
+
+const cors = require('cors');
+
+let corsOptions = {
+   origin: "http://localhost:3000"
+};
+ 
+app.use(cors(corsOptions));
 
 mongoose.connect(uri, (err, res) => {
  
@@ -19,7 +28,6 @@ app.listen(PORT, () => {
 });
 
 app.get('/', async function (req, res) {
-    res.send('Espoti fai')
-    const token = await getToken();
-    console.log(token);
-  })
+   res.send('Espoti fai')
+   console.log(token);
+})
