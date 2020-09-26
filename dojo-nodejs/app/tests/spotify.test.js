@@ -1,12 +1,11 @@
 const assert = require("chai").assert;
-const getToken = require("../services/token.service.js");
+const getTracks = require("../services/spotify/spotify.service.js");
 
 describe("App functionalities ", function() {
     describe("Sporifi services", function() {
-        it("get token", async function() {
-            const result = await getToken();
+        it("get tracks", async function() {
+            const result = await getTracks("bad bunny");
             console.log(result);
-            console.log("eoeoeo");
         });
     }); 
 }); 
