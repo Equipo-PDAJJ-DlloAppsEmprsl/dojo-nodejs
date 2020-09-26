@@ -10,10 +10,13 @@ mongoose.connect(uri, (err, res) => {
  
     if (err) throw err;
     console.log("Base de datos online")
- })
- 
+ }); 
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
  console.log(`Server is running on port ${PORT}.`);
 });
+
+app.get('/', function (req, res) {
+    res.send('Hello World')
+  })
